@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			const socket = io();
+			const room = '213acv';
+			socket.emit('joinDBZ', room);
+
+			socket.on('random', function(msg) {
+				console.log(msg);
+			});
+
+			const randomizeCharacters = {
+				room: room,
+				player1: [
+					{
+						name: 'Android 16'
+					},
+					{
+						name: 'Android 17'
+					}
+				],
+				player2: [
+					{
+						name: 'Android 18'
+					},
+					{
+						name: 'Android 21'
+					}
+				]
+			};
+			socket.emit('random', randomizeCharacters);
+		</script>
+	</body>
+</html>
